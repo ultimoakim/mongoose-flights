@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* Redirected to flights now */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.redirect('/flights');
 });
 
 module.exports = router;
