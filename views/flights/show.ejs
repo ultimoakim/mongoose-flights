@@ -37,7 +37,7 @@
         <option value="SAN">SAN</option>
     </select>
     <label>Arrival: </label>
-    <input name="arrival" type="date">
+    <input name="arrival" type="date" required>
     <input type="submit" value="Add Destination">
 </form>
 
@@ -63,6 +63,43 @@
     <% } else { %>
         <h5>No Destinations Yet</h5>
         <% } %>
+
+        <br>
+
+  <h2>Tickets</h2>
+  <form action="/flights/<%= flight._id %>/tickets" method="POST">
+    <label>Seat: </label>
+    <input name="seat" type="string" required>
+    <label>Price: </label>
+    <input name="price" type="number" required>
+    <input type="submit" value="Add Ticket">
+</form>
+
+<br>
+
+<% if (flight.tickets.length) { %>
+    <table>
+        <thead>
+          <tr>
+            <th>Seat</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% flight.tickets.forEach(function(f) { %>
+            <tr>
+              <td><%= f.seat %></td>
+              <td><%= f.price %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+        <h5>No Tickets Yet</h5>
+        <% } %>
+
+        <br>
+
 
 
 <%- include('../partials/footer') %>
